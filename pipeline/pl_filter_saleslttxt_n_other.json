@@ -121,7 +121,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"ds_filesystem_pp": "dataengineeringproject",
-													"ds_directory_pp": "sales"
+													"ds_directory_pp": "Sales"
 												}
 											}
 										]
