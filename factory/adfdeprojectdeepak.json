@@ -1,0 +1,9 @@
+{
+	"name": "adfdeprojectdeepak",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "bf539b08-82ec-4a15-b6d8-4c9255086a5f",
+		"tenantId": "9cdb95f0-660e-4382-9f95-a74d94dc221f"
+	}
+}
