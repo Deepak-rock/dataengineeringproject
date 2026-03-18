@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "src",
+				"folderPath": "src/Source.zip/AdventureWorksLTDEPOC",
 				"fileSystem": "dataengineeringproject"
 			},
 			"columnDelimiter": ",",
