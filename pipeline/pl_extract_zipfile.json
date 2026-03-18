@@ -1,5 +1,5 @@
 {
-	"name": "pp_extract_zipfile",
+	"name": "pl_extract_zipfile",
 	"properties": {
 		"activities": [
 			{
