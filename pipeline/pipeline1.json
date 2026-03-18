@@ -17,14 +17,9 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ds_getmetadata",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": "*.zip"
-						}
+						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
 						"enablePartitionDiscovery": false
