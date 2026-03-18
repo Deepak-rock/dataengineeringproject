@@ -209,13 +209,6 @@
 											"type": "Expression"
 										},
 										"type": "String"
-									},
-									"execution_time": {
-										"value": {
-											"value": "@formatDateTime(utcnow(), 'yyyy-MM-dd HH:mm:ss')",
-											"type": "Expression"
-										},
-										"type": "Timespan"
 									}
 								}
 							},
