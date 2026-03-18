@@ -1,0 +1,23 @@
+{
+	"name": "ds_lookup_src",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslinkedserviceforDEproject",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "src",
+				"fileSystem": "dataengineeringproject"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
