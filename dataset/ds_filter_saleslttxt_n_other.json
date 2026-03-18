@@ -1,0 +1,23 @@
+{
+	"name": "ds_filter_saleslttxt_n_other",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslinkedserviceforDEproject",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "source",
+				"fileSystem": "dataengineeringproject"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
