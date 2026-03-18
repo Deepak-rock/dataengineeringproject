@@ -59,6 +59,66 @@
 									"value": "@and(startswith(item().name, 'SalesLT'),endswith(item().name, '.txt'))",
 									"type": "Expression"
 								},
+								"ifFalseActivities": [
+									{
+										"name": "Copy data2",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobFSReadSettings",
+													"recursive": true,
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings"
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "ds_parameter_for_filter",
+												"type": "DatasetReference"
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "ds_otherfiles_transfer",
+												"type": "DatasetReference"
+											}
+										]
+									}
+								],
 								"ifTrueActivities": [
 									{
 										"name": "Copy data1",
@@ -107,32 +167,43 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "ds_parameter_source",
-												"type": "DatasetReference",
-												"parameters": {
-													"ds_filesystem_pp": "dataengineeringproject",
-													"ds_directory_pp": "source"
-												}
+												"referenceName": "ds_parameter_for_filter",
+												"type": "DatasetReference"
 											}
 										],
 										"outputs": [
 											{
-												"referenceName": "ds_parameter_source",
-												"type": "DatasetReference",
-												"parameters": {
-													"ds_filesystem_pp": "dataengineeringproject",
-													"ds_directory_pp": "Sales"
-												}
+												"referenceName": "ds_saleslt_transfer",
+												"type": "DatasetReference"
 											}
 										]
 									}
 								]
+							}
+						},
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "filename",
+								"value": ""
 							}
 						}
 					]
 				}
 			}
 		],
+		"variables": {
+			"filename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
