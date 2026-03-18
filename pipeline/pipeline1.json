@@ -23,12 +23,7 @@
 						}
 					},
 					"fieldList": [
-						"contentMD5",
-						"exists",
-						"itemName",
-						"itemType",
-						"size",
-						"contentMD5"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
