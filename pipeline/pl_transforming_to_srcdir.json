@@ -67,6 +67,31 @@
 									"type": "Expression"
 								}
 							}
+						},
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_parameter",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"pp_filesystem": "dataengineeringproject",
+									"pp_directory_in": "src/Source.zip/AdventureWorksLTDEPOC",
+									"pp_filename": {
+										"value": "@item().name",
+										"type": "Expression"
+									},
+									"pp_directory_out": "source"
+								}
+							}
 						}
 					]
 				}
