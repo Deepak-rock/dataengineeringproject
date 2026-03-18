@@ -13,11 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "filename_para"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ds_lookup_src",
@@ -46,9 +42,35 @@
 						]
 					}
 				],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "meta_check",
+								"value": {
+									"value": "@item().name",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
 			}
 		],
+		"variables": {
+			"meta_check": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
