@@ -31,7 +31,7 @@
 						"referenceName": "ds_lookup_src",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			}
 		],
