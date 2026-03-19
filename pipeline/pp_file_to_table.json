@@ -1,5 +1,5 @@
 {
-	"name": "p_file_to_table",
+	"name": "pp_file_to_table",
 	"properties": {
 		"activities": [
 			{
@@ -26,16 +26,40 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "ds_audit_table_src",
 						"type": "DatasetReference"
 					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
 				]
 			}
 		],
+		"parameters": {
+			"pp_filename": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
