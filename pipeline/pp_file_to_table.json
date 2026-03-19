@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
-				"type": "Copy",
+				"name": "Script1",
+				"type": "Script",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -14,55 +14,33 @@
 					"secureInput": false
 				},
 				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
 				},
-				"inputs": [
-					{
-						"referenceName": "ds_audit_table_src",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": {
-								"value": "@pipeline().parameters.pp_filename",
-								"type": "Expression"
-							}
+				"typeProperties": {
+					"scripts": [
+						{
+							"parameters": [
+								{
+									"name": "filename",
+									"type": "String",
+									"value": {
+										"value": "@pipeline().parameters.filename",
+										"type": "Expression"
+									}
+								}
+							],
+							"type": "Query",
+							"text": "INSERT INTO de_project.audit_table\nVALUES ('{filename}', GETDATE());"
 						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
-					}
-				]
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
 			}
 		],
 		"parameters": {
-			"pp_filename": {
+			"filename": {
 				"type": "string"
 			}
 		},
