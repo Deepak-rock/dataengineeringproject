@@ -44,7 +44,13 @@
 				"inputs": [
 					{
 						"referenceName": "ds_audit_table_src",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
