@@ -1,0 +1,23 @@
+{
+	"name": "ds_audit_table_src",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslinkedserviceforDEproject",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Sales",
+				"fileSystem": "dataengineeringproject"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
