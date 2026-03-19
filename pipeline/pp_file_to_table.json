@@ -22,7 +22,10 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "INSERT INTO de_project.audit_table\nVALUES ('{filename}', GETDATE());"
+							"text": {
+								"value": "@INSERT INTO de_project.audit_table\nVALUES (pipeline().parameters.filename, GETDATE());",
+								"type": "Expression"
+							}
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
